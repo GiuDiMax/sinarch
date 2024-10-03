@@ -1,0 +1,58 @@
+---
+import { register } from 'swiper/element/bundle';
+register();
+
+import fs from 'fs';
+import path from 'path';
+
+const { dir } = Astro.props;
+const imagesDir = path.resolve(dir);
+const images = fs.readdirSync(imagesDir).filter(file => /\.(png|jpe?g|gif|webp)$/i.test(file));
+---
+
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        {images.map(image => (
+                <div class="swiper-slide"><img src={`${dir}/${image}`} alt={image} /></div>
+        ))}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<script client:load>
+    new Swiper('.mySwiper', {
+        slidesPerView: 3,
+        grid: {
+            rows: 3,
+        },
+        mousewheel: {
+            forceToAxis: true,
+        },
+    });
+</script>
+<!--<script client:load define:vars={{ images }}>-->
+<!--    document.addEventListener('DOMContentLoaded', function() {-->
+<!--        const imagesData = JSON.parse(JSON.stringify(images));-->
+<!--        let currentIndex = 0;-->
+<!--        const slider = document.getElementById('slider');-->
+
+<!--        function updateSlider() {-->
+<!--            slider.style.transform = `translateX(-${currentIndex * 100}%)`;-->
+<!--        }-->
+
+<!--        function nextSlide() {-->
+<!--            currentIndex = (currentIndex + 1) % imagesData.length;-->
+<!--            updateSlider();-->
+<!--        }-->
+
+<!--        function prevSlide() {-->
+<!--            currentIndex = (currentIndex - 1 + imagesData.length) % imagesData.length;-->
+<!--            updateSlider();-->
+<!--        }-->
+
+<!--        document.querySelector('.next').addEventListener('click', nextSlide);-->
+<!--        document.querySelector('.prev').addEventListener('click', prevSlide);-->
+<!--        //setInterval(nextSlide, 2000);-->
+<!--    });-->
+<!--</script>-->

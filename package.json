@@ -19,6 +19,7 @@
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/inter-tight": "^5.1.0",
     "@fontsource/inter": "^5.0.17",
     "@fontsource/lora": "^5.0.16",
     "@tailwindcss/typography": "^0.5.10",
@@ -30,6 +31,7 @@
     "eslint-plugin-astro": "^0.32.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "sharp": "^0.33.3",
+    "swiper": "^11.1.14",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.2"

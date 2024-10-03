@@ -1,34 +1,75 @@
 ---
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
-import { SITE } from "@consts";
+import {SITE} from "@consts";
 ---
-
-<header>
-  <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
-        <div class="font-semibold">
-          {SITE.NAME}
+<header id="header">
+    <Container>
+        <nav class="navbar p-4 flex justify-between items-center">
+            <a href="/" class="titlemenu text-white text-lg">LAN</a>
+            <div id="container" class="icon-menu-container">
+                <label for="checkbox"></label><input type="checkbox" id="checkbox"/>
+                <div id="icon-container" class="icon-container">
+                    <div id="icon" class="icon-menu"></div>
+                </div>
+            </div>
+        </nav>
+        <div id="menu" class="menu fixed inset-0 flex items-center justify-center" style="display:none;">
+            <ul class="text-center text-white bigtext ">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
         </div>
-      </Link>
-      <nav class="flex gap-1">
-        <Link href="/blog">
-          blog
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/work">
-          work
-        </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/projects">
-          projects
-        </Link>
-      </nav>
-    </div>
-  </Container>
+
+        <script>
+
+            const tgt = document.querySelector("#container");
+            tgt.addEventListener("click", () => {
+                onMenuToggle()
+            });
+
+            function onMenuToggle() {
+                const icon = document.getElementById("icon");
+                const checkbox = document.getElementById("checkbox");
+                const header = document.getElementById("header");
+                const isChecked = checkbox.checked;
+                checkbox.checked = !isChecked;
+                icon.className = checkbox.checked ? "icon-close" : "icon-menu";
+
+                const menu = document.querySelector(".menu");
+                const arrows = document.querySelectorAll(".splide__arrow");
+
+                if (checkbox.checked) {
+                    menu.style.display = "flex";
+                    menu.style.opacity = 0;
+                    setTimeout(() => {
+                        menu.style.opacity = 1;
+                        menu.style.transition = "opacity 200ms";
+                        header.classList.add("fullheight");
+                    }, 10);
+
+                    arrows.forEach(arrow => {
+                        arrow.style.display = "none";
+                    });
+                } else {
+                    menu.style.opacity = 0;
+                    setTimeout(() => {
+                        menu.style.display = "none";
+                        header.classList.remove("fullheight");
+                    }, 200);
+
+                    arrows.forEach(arrow => {
+                        arrow.style.display = "flex";
+                        arrow.style.opacity = 0;
+                        setTimeout(() => {
+                            arrow.style.opacity = 1;
+                            arrow.style.transition = "opacity 200ms";
+                        }, 10);
+                    });
+                }
+            }
+        </script>
+    </Container>
 </header>

@@ -1,0 +1,58 @@
+html{
+    /*font-family: 'Inter Tight Variable', sans-serif*/
+}
+
+header {
+    @apply bg-black/10;
+    @apply backdrop-blur;
+}
+
+.menu{
+}
+
+header{
+}
+
+.fullheight{
+    height: 100%;
+}
+
+.bigtext{
+    font-size: 5em;
+    font-weight: bold;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.titlemenu, .icon-container{
+    position: relative;
+    z-index:9;
+    font-size: 5.5em;
+    font-weight: bold;
+    letter-spacing: .2em;
+}
+
+.icon-menu-container{
+    margin-right: 1em;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    top: 2em;
+}
+
+.icon-menu, .icon-menu:before, .icon-menu:after{
+    width: 1em;
+    height: 0.07em;
+}
+
+.icon-menu:before{
+    top: -0.2em;
+}
+
+.icon-menu:after{
+    top: 0.2em;
+}
+
+.icon-close, .icon-close:before, .icon-close:after{
+    width: 1em;
+    height: 0.07em;
+}

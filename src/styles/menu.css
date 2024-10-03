@@ -1,0 +1,70 @@
+#page {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  height: 200px
+}
+
+#container {
+  position: relative;
+}
+
+#checkbox {
+  /* checkbox is hidden*/
+  display: none
+}
+
+#icon-container {
+  cursor: pointer;
+  display:block;
+  height: 80px;
+  width: 80px;
+}
+
+/* common styles*/
+.icon-menu, .icon-menu::before, .icon-menu::after, .icon-close, .icon-close::before, .icon-close::after {
+  content: '';
+  display: block;
+  height: 2.7px;
+  position: absolute;
+  width: 28px;
+  border-radius: 20px;
+  transition: top ease 0.3s, transform ease 0.3s 0.3s, background 0.3s ease 0.3s;
+  background: white;
+}
+
+
+/* bottom line of hamburger */
+.icon-menu::before {
+  top: -7px;
+  transition: background ease 0.3s,top ease 0.3s 0.3s, transform ease 0.3s;
+}
+
+/* top line of hamburger */
+.icon-menu::after {
+  top: 7px;
+  transition: background ease 0.3s,top ease 0.3s 0.3s, transform ease 0.3s;
+}
+
+.icon-close {
+  background: transparent;
+}
+
+/* line one of close icon */
+.icon-close::before {
+  transform: rotate(45deg);
+  top: 0px;
+  background: white;
+}
+
+/* line two of close icon */
+.icon-close::after {
+  transform: rotate(-45deg);
+  top: 0px;
+  background: white;
+}
+
+#icon {
+  top: 20;
+  transition: background ease 0.3s,top ease 0.3s 0.3s, transform ease 0.3s;
+}
