@@ -4,6 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://astro-nano-demo.vercel.app",
+  site: "https://giudimax.github.io",
+  base: "sinarch",
   integrations: [mdx(), sitemap(), tailwind()],
 });
