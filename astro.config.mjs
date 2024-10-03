@@ -4,7 +4,6 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://giudimax.github.io",
-  base: "sinarch",
+  site: "https://test.sin-arch.it",
   integrations: [mdx(), sitemap(), tailwind()],
 });
