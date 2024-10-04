@@ -5,9 +5,9 @@ import SmallPageLayout from "@layouts/SmallPageLayout.astro";
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxaAwCRENMJ-T2fn43hD4DSNMSyktVYgM" async defer></script>
 
 <script type="text/javascript">
-    window.addEventListener('load', init);
+    google.maps.event.addDomListener(window, 'load', init);
 
-    async function init() {
+    function init() {
         var mapOptions = {
             zoom: 15,
             center: new google.maps.LatLng(41.06277847290039, 16.911672592163086),
