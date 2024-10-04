@@ -2,12 +2,19 @@
 import Container from "@components/Container.astro";
 import SmallPageLayout from "@layouts/SmallPageLayout.astro";
 ---
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxaAwCRENMJ-T2fn43hD4DSNMSyktVYgM"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxaAwCRENMJ-T2fn43hD4DSNMSyktVYgM&callback=initMap"></script>
 
 <script type="text/javascript">
-    google.maps.event.addDomListener(window, 'load', init);
+    // document.addEventListener("DOMContentLoaded", () => init());
+    // document.addEventListener("astro:after-swap", () => init());
+    //
+    // function init(){
+    //     try{initMap()}catch{}
+    // }
 
-    function init() {
+    google.maps.event.addDomListener(window, 'load', initMap);
+
+    function initMap() {
         var mapOptions = {
             zoom: 15,
             center: new google.maps.LatLng(41.06277847290039, 16.911672592163086),
