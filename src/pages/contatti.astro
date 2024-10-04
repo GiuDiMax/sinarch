@@ -2,30 +2,92 @@
 import Container from "@components/Container.astro";
 import SmallPageLayout from "@layouts/SmallPageLayout.astro";
 ---
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxaAwCRENMJ-T2fn43hD4DSNMSyktVYgM" async defer></script>
+
+<script type="text/javascript">
+    window.addEventListener('load', init);
+
+    async function init() {
+        var mapOptions = {
+            zoom: 15,
+            center: new google.maps.LatLng(41.06277847290039, 16.911672592163086),
+            styles: [{
+                "featureType": "administrative",
+                "elementType": "all",
+                "stylers": [{"saturation": "-100"}]
+            }, {
+                "featureType": "administrative.province",
+                "elementType": "all",
+                "stylers": [{"visibility": "off"}]
+            }, {
+                "featureType": "landscape",
+                "elementType": "all",
+                "stylers": [{"saturation": -100}, {"lightness": 65}, {"visibility": "on"}]
+            }, {
+                "featureType": "poi",
+                "elementType": "all",
+                "stylers": [{"saturation": -100}, {"lightness": "50"}, {"visibility": "simplified"}]
+            }, {
+                "featureType": "road",
+                "elementType": "all",
+                "stylers": [{"saturation": "-100"}]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "all",
+                "stylers": [{"visibility": "simplified"}]
+            }, {
+                "featureType": "road.arterial",
+                "elementType": "all",
+                "stylers": [{"lightness": "30"}]
+            }, {
+                "featureType": "road.local",
+                "elementType": "all",
+                "stylers": [{"lightness": "40"}]
+            }, {
+                "featureType": "transit",
+                "elementType": "all",
+                "stylers": [{"saturation": -100}, {"visibility": "simplified"}]
+            }, {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [{"hue": "#ffff00"}, {"lightness": -25}, {"saturation": -97}]
+            }, {
+                "featureType": "water",
+                "elementType": "labels",
+                "stylers": [{"lightness": -25}, {"saturation": -100}]
+            }],
+        }
+        var mapElement = document.getElementById('map');
+        var map = new google.maps.Map(mapElement, mapOptions);
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(41.06277847290039, 16.911672592163086),
+            map: map,
+            title: 'SIN ARCH',
+            icon: {
+                url: "/favicon.svg",
+                scaledSize: new google.maps.Size(50, 50) // Dimensioni desiderate
+            }
+        });
+    }
+</script>
+
 <style>
-    .responsive-iframe {
-        border: none;
+    #map {
         width: 100%;
         height: 100%;
-    }
-    .no-scroll {
-        overflow: hidden;
     }
 </style>
 
 <SmallPageLayout title="Contatti" description="Contatti">
     <Container>
-        <p class="mb-10 testo">
+        <p class="mb-10 testo text-black">
             SIN ARCH si trova in via Casalino 178, 70019 - Triggiano (Bari) <br /><br />
             Per collaborazioni, proposte, nuovi prgetti o richieste informazioni/portfolio contattaci a:<br />
             <a href="mailto:sin.arch@gmail.com"><strong>sin.arch@gmail.com</strong></a><br /><br />
             Se sei interessato a collaborare con noi, anche in forma di stage/tirocinio, vieni a trovarci o contattaci al nostro indirizzo email inviando un pdf con cover letter, CV, ed alcuni esempi dei tuoi lavori.
         </p>
         <div class="mappa cornice">
-            <iframe
-                    class="responsive-iframe no-scroll"
-                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=via%20Casalino%20178,%2070019%20-%20Triggiano%20(Bari)+(SIN%20ARC)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-            </iframe>
+            <div id="map"></div>
         </div>
     </Container>
 </SmallPageLayout>
