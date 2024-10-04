@@ -2,16 +2,16 @@
 import fs from 'fs';
 import path from 'path';
 const { dir } = Astro.props;
-const isDev = import.meta.env.MODE === 'development';
-const imagesDir = isDev ? path.resolve('public', dir) : path.resolve(dir);
-const images = fs.readdirSync(imagesDir).filter(file => /\.(png|jpe?g|gif|webp)$/i.test(file));
+//const isDev = import.meta.env.MODE === 'development';
+//const imagesDir = isDev ? path.resolve('public', dir) : path.resolve(dir);
+const images = fs.readdirSync(dir).filter(file => /\.(png|jpe?g|gif|webp)$/i.test(file));
 export { images };
 ---
 
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         {images.map(image => (
-                <div class="swiper-slide"><img src={`${dir}/${image}`} alt={image} /></div>
+                <div class="swiper-slide"><img src={`/slider/${image}`} alt={image} /></div>
         ))}
     </div>
     <div class="swiper-button-next"></div>
