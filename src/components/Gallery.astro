@@ -1,11 +1,11 @@
 ---
 import fs from 'fs';
-import path from 'path';
+//import path from 'path';
 const { dir } = Astro.props;
 const dir2 = dir.replace('public/','/')
 //const isDev = import.meta.env.MODE === 'development';
 //const imagesDir = isDev ? path.resolve('public', dir) : path.resolve(dir);
-let images = [];
+let images: string[] = [];
 try {
     images = fs.readdirSync(dir).filter(file => /\.(png|jpe?g|gif|webp)$/i.test(file));
 }catch{}

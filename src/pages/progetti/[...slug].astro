@@ -26,7 +26,7 @@ const { Content } = await project.render();
 
 const dir = `public/progetti/${project.slug}`
 const dir2 = dir.replace('public/','/')
-let images = [];
+let images: string[] = [];
 try {
   images = fs.readdirSync(dir).filter(file =>
       /\.(png|jpe?g|gif|webp)$/i.test(file) && !/^preview\./i.test(file)
