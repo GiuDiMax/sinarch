@@ -1,7 +1,7 @@
 ---
 import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
-import {SITE} from "@consts";
+//import Link from "@components/Link.astro";
+//import { SITE } from "@consts";
 ---
 <header id="header">
     <Container>
@@ -26,32 +26,35 @@ import {SITE} from "@consts";
         </div>
 
         <script>
-
             document.addEventListener("DOMContentLoaded", () => init());
             document.addEventListener("astro:after-swap", () => init());
 
             function init(){
                 const tgt = document.querySelector("#container");
+                if (!tgt) return; // Verifica che tgt esista
+
                 tgt.addEventListener("click", () => {
                     onMenuToggle()
                 });
 
                 function onMenuToggle() {
                     const icon = document.getElementById("icon");
-                    const checkbox = document.getElementById("checkbox");
+                    const checkbox = document.getElementById("checkbox") as HTMLInputElement | null;
                     const header = document.getElementById("header");
+                    const menu = document.querySelector<HTMLDivElement>(".menu");
+                    const arrows = document.querySelectorAll<HTMLElement>(".splide__arrow");
+
+                    if (!icon || !checkbox || !header || !menu) return; // Verifica che tutti gli elementi esistano
+
                     const isChecked = checkbox.checked;
                     checkbox.checked = !isChecked;
                     icon.className = checkbox.checked ? "icon-close" : "icon-menu";
 
-                    const menu = document.querySelector(".menu");
-                    const arrows = document.querySelectorAll(".splide__arrow");
-
                     if (checkbox.checked) {
                         menu.style.display = "flex";
-                        menu.style.opacity = 0;
+                        menu.style.opacity = "0";
                         setTimeout(() => {
-                            menu.style.opacity = 1;
+                            menu.style.opacity = "1";
                             menu.style.transition = "opacity 200ms";
                             header.classList.add("fullheight");
                         }, 10);
@@ -60,7 +63,7 @@ import {SITE} from "@consts";
                             arrow.style.display = "none";
                         });
                     } else {
-                        menu.style.opacity = 0;
+                        menu.style.opacity = "0";
                         setTimeout(() => {
                             menu.style.display = "none";
                             header.classList.remove("fullheight");
@@ -68,9 +71,9 @@ import {SITE} from "@consts";
 
                         arrows.forEach(arrow => {
                             arrow.style.display = "flex";
-                            arrow.style.opacity = 0;
+                            arrow.style.opacity = "0";
                             setTimeout(() => {
-                                arrow.style.opacity = 1;
+                                arrow.style.opacity = "1";
                                 arrow.style.transition = "opacity 200ms";
                             }, 10);
                         });

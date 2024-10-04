@@ -25,13 +25,12 @@ const progetti = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    location: z.string(),
+    place: z.string(),
     date: z.coerce.date(),
     link: z.string(),
-    //preview: z.string(),
-    // draft: z.boolean().optional(),
-    // demoURL: z.string().optional(),
-    // repoURL: z.string().optional()
+    draft: z.boolean().optional(),
+    demoURL: z.string().optional(),
+    repoURL: z.string().optional()
   }),
 });
 

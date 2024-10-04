@@ -1,9 +1,10 @@
 ---
 title: "Casa Luzzati"
 description: "Descrizione."
-location: "Bari"
+place: "Bari"
 date: "Mar 18 2024"
 link: "https://google.com"
+draft: true
 ---
 
 ![Astro Sphere Lighthouse Score](/astro-sphere.jpg)

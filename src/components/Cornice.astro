@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 
 type Props = {
-  entry: CollectionEntry<"news"> | CollectionEntry<"progetti">;
+  entry: CollectionEntry<"progetti">;
 }
 
 const { entry } = Astro.props;
@@ -15,7 +15,7 @@ const { entry } = Astro.props;
       {entry.data.title}
     </div>
     <div class="text-base">
-      {entry.data.location}
+      {entry.data.place}
     </div>
   </div>
 </a>
