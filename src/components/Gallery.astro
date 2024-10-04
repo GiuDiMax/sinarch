@@ -31,9 +31,9 @@ export { images };
     import 'swiper/css/pagination';
 
     document.addEventListener("DOMContentLoaded", () => gallery());
-    document.addEventListener("astro:after-swap", () => gallery());
 
     function gallery() {
+        console.log('gallery')
         new Swiper('.mySwiper', {
             modules: [Navigation, Thumbs, Autoplay],
             mousewheel: true,
