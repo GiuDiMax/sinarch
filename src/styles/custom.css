@@ -8,6 +8,7 @@ header {
 }
 
 .menu{
+
 }
 
 header{
@@ -40,19 +41,35 @@ header{
 }
 
 .icon-menu, .icon-menu:before, .icon-menu:after{
-    width: 1em;
-    height: 0.07em;
+    width: 0.7em;
+    height: 0.05em;
 }
 
 .icon-menu:before{
-    top: -0.2em;
+    top: -0.15em;
 }
 
 .icon-menu:after{
-    top: 0.2em;
+    top: 0.15em;
 }
 
 .icon-close, .icon-close:before, .icon-close:after{
-    width: 1em;
-    height: 0.07em;
+    width: 0.7em;
+    height: 0.05em;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: white !important;
+}
+
+main{
+    padding-top:13rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.swiper, .swiper-wrapper, .swiper-slide, .swiper-slide img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
 }

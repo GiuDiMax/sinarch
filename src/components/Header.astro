@@ -6,7 +6,7 @@ import {SITE} from "@consts";
 <header id="header">
     <Container>
         <nav class="navbar p-4 flex justify-between items-center">
-            <a href="/" class="titlemenu text-white text-lg">LAN</a>
+            <a href="/" class="titlemenu text-white text-lg">SIN</a>
             <div id="container" class="icon-menu-container">
                 <label for="checkbox"></label><input type="checkbox" id="checkbox"/>
                 <div id="icon-container" class="icon-container">
@@ -16,58 +16,65 @@ import {SITE} from "@consts";
         </nav>
         <div id="menu" class="menu fixed inset-0 flex items-center justify-center" style="display:none;">
             <ul class="text-center text-white bigtext ">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/studio">Studio</a></li>
+                <li><a href="/progetti">Progetti</a></li>
+                <li><a href="/ricerca">Ricerca</a></li>
+                <li><a href="/contatti">Contatti</a></li>
+                <li><a href="/news">News</a></li>
             </ul>
         </div>
 
         <script>
 
-            const tgt = document.querySelector("#container");
-            tgt.addEventListener("click", () => {
-                onMenuToggle()
-            });
+            document.addEventListener("DOMContentLoaded", () => init());
+            document.addEventListener("astro:after-swap", () => init());
 
-            function onMenuToggle() {
-                const icon = document.getElementById("icon");
-                const checkbox = document.getElementById("checkbox");
-                const header = document.getElementById("header");
-                const isChecked = checkbox.checked;
-                checkbox.checked = !isChecked;
-                icon.className = checkbox.checked ? "icon-close" : "icon-menu";
+            function init(){
+                const tgt = document.querySelector("#container");
+                tgt.addEventListener("click", () => {
+                    onMenuToggle()
+                });
 
-                const menu = document.querySelector(".menu");
-                const arrows = document.querySelectorAll(".splide__arrow");
+                function onMenuToggle() {
+                    const icon = document.getElementById("icon");
+                    const checkbox = document.getElementById("checkbox");
+                    const header = document.getElementById("header");
+                    const isChecked = checkbox.checked;
+                    checkbox.checked = !isChecked;
+                    icon.className = checkbox.checked ? "icon-close" : "icon-menu";
 
-                if (checkbox.checked) {
-                    menu.style.display = "flex";
-                    menu.style.opacity = 0;
-                    setTimeout(() => {
-                        menu.style.opacity = 1;
-                        menu.style.transition = "opacity 200ms";
-                        header.classList.add("fullheight");
-                    }, 10);
+                    const menu = document.querySelector(".menu");
+                    const arrows = document.querySelectorAll(".splide__arrow");
 
-                    arrows.forEach(arrow => {
-                        arrow.style.display = "none";
-                    });
-                } else {
-                    menu.style.opacity = 0;
-                    setTimeout(() => {
-                        menu.style.display = "none";
-                        header.classList.remove("fullheight");
-                    }, 200);
-
-                    arrows.forEach(arrow => {
-                        arrow.style.display = "flex";
-                        arrow.style.opacity = 0;
+                    if (checkbox.checked) {
+                        menu.style.display = "flex";
+                        menu.style.opacity = 0;
                         setTimeout(() => {
-                            arrow.style.opacity = 1;
-                            arrow.style.transition = "opacity 200ms";
+                            menu.style.opacity = 1;
+                            menu.style.transition = "opacity 200ms";
+                            header.classList.add("fullheight");
                         }, 10);
-                    });
+
+                        arrows.forEach(arrow => {
+                            arrow.style.display = "none";
+                        });
+                    } else {
+                        menu.style.opacity = 0;
+                        setTimeout(() => {
+                            menu.style.display = "none";
+                            header.classList.remove("fullheight");
+                        }, 200);
+
+                        arrows.forEach(arrow => {
+                            arrow.style.display = "flex";
+                            arrow.style.opacity = 0;
+                            setTimeout(() => {
+                                arrow.style.opacity = 1;
+                                arrow.style.transition = "opacity 200ms";
+                            }, 10);
+                        });
+                    }
                 }
             }
         </script>

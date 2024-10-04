@@ -1,40 +1,45 @@
 ---
-import {getCollection} from "astro:content";
+//import {getCollection} from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import Link from "@components/Link.astro";
-import {dateRange} from "@lib/utils";
+// import ArrowCard from "@components/ArrowCard.astro";
+// import Link from "@components/Link.astro";
+// import {dateRange} from "@lib/utils";
 import {SITE, HOME, SOCIALS} from "@consts";
 import Gallery from '../components/Gallery.astro';
 
-const blog = (await getCollection("blog"))
-    .filter(post => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-    .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
-
-const projects = (await getCollection("projects"))
-    .filter(project => !project.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-    .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
-
-const allwork = (await getCollection("work"))
-    .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-    .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
-
-const work = await Promise.all(
-    allwork.map(async (item) => {
-        const {Content} = await item.render();
-        return {...item, Content};
-    })
-);
+// const news = (await getCollection("news"))
+//     .filter(post => !post.data.draft)
+//     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+//     .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+//
+// const progetti = (await getCollection("progetti"))
+//     .filter(project => !project.data.draft)
+//     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+//     .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+//
+// const ricerca = (await getCollection("ricerca"))
+//     .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+//     .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
+//
+// const allwork = await Promise.all(
+//     allwork.map(async (item) => {
+//         const {Content} = await item.render();
+//         return {...item, Content};
+//     })
+// );
 ---
+<style is:global>
+    .copyright div{
+        color: white !important;
+    }
+</style>
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
     <Container>
-        <!--<div style="width:100%; height:100%; left:0; top: 0; position:absolute; z-index:0; object-fit: cover; margin:0; padding:0;">-->
-        <!--    <img style="width:100%; height:100%; object-fit: cover;" src="public/slider/s01.webp" alt="s01">-->
-        <!--</div>-->
-        <Gallery dir="public/slider" />
+        <div style="width:100%; height:100%; left:0; top: 0; position:fixed; z-index:0; object-fit: cover; margin:0; padding:0;">
+            <Gallery dir="public/slider" />
+        </div>
     </Container>
 </PageLayout>
+

@@ -3,29 +3,29 @@ import type { Site, Metadata, Socials } from "@types";
 export const SITE: Site = {
   NAME: "Sin Arch",
   EMAIL: "paofort@outlook.it",
-  NUM_POSTS_ON_HOMEPAGE: 0,
-  NUM_WORKS_ON_HOMEPAGE: 0,
-  NUM_PROJECTS_ON_HOMEPAGE: 0,
+  // NUM_NEWS_ON_HOMEPAGE: 0,
+  // NUM_RICERCA_ON_HOMEPAGE: 0,
+  // NUM_PROJECTS_ON_HOMEPAGE: 0,
 };
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION: "Astro Nano is a minimal and lightweight blog and portfolio.",
+  DESCRIPTION: "SIN ARCH.",
 };
 
-export const BLOG: Metadata = {
-  TITLE: "Blog",
+export const NEWS: Metadata = {
+  TITLE: "News",
   DESCRIPTION: "A collection of articles on topics I am passionate about.",
 };
 
-export const WORK: Metadata = {
-  TITLE: "Work",
+export const RICERCA: Metadata = {
+  TITLE: "Ricerca",
   DESCRIPTION: "Where I have worked and what I have done.",
 };
 
-export const PROJECTS: Metadata = {
-  TITLE: "Projects",
-  DESCRIPTION: "A collection of my projects, with links to repositories and demos.",
+export const PROGETTI: Metadata = {
+  TITLE: "Progetti",
+  DESCRIPTION: "I miei progetti.",
 };
 
 export const SOCIALS: Socials = [
