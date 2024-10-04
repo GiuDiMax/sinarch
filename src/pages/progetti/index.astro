@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
+import Cornice from "@components/Cornice.astro";
 import { PROGETTI } from "@consts";
 
 const projects = (await getCollection("progetti"))
@@ -14,17 +14,17 @@ const projects = (await getCollection("progetti"))
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        Projects
+        Progetti
       </div>
-      <ul class="animate flex flex-col gap-4">
+      <div class="animate grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
         {
           projects.map((project) => (
-            <li>
-              <ArrowCard entry={project}/>
-            </li>
+              <div>
+                <Cornice entry={project}/>
+              </div>
           ))
         }
-      </ul>
+      </div>
     </div>
   </Container>
 </PageLayout>

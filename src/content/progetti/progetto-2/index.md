@@ -1,9 +1,9 @@
 ---
-title: "Astro Nano"
-description: "Minimal portfolio and blog build with astro and no frameworks."
-date: "Mar 26 2024"
-demoURL: "https://astro-nano-demo.vercel.app"
-repoURL: "https://github.com/markhorn-dev/astro-nano"
+title: "Casa Luzzati"
+description: "Descrizione."
+location: "Bari"
+date: "Mar 18 2024"
+link: "https://google.com"
 ---
 
 ![Astro Nano](/astro-nano.png)

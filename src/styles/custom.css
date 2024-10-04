@@ -73,3 +73,20 @@ main{
     width:100%;
     object-fit: cover;
 }
+
+.mappa{
+    aspect-ratio: 1;
+}
+
+.cornice{
+    border: 1px solid darkgray;
+}
+
+.testo{
+    @apply hyphens-auto;
+    @apply text-justify;
+}
+
+.testo a{
+    text-decoration: underline;
+}
