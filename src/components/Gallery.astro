@@ -2,8 +2,10 @@
 import fs from 'fs';
 import path from 'path';
 const { dir } = Astro.props;
-const imagesDir = path.resolve(dir);
+const isDev = import.meta.env.MODE === 'development';
+const imagesDir = isDev ? path.resolve('public', dir) : path.resolve(dir);
 const images = fs.readdirSync(imagesDir).filter(file => /\.(png|jpe?g|gif|webp)$/i.test(file));
+export { images };
 ---
 
 <div class="swiper mySwiper">
