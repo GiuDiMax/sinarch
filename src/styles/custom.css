@@ -1,61 +1,52 @@
-html{
-    /*font-family: 'Inter Tight Variable', sans-serif*/
-}
-
 header {
     @apply bg-black/10;
     @apply backdrop-blur;
-}
-
-.menu{
-
-}
-
-header{
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .fullheight{
     height: 100%;
 }
 
-.bigtext{
-    font-size: 5em;
-    font-weight: bold;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-}
-
 .titlemenu, .icon-container{
     position: relative;
     z-index:9;
-    font-size: 5.5em;
+    @apply hover:text-gray-400;
+    @apply transition-colors;
+}
+
+.menulist{
+    line-height: 2em;
+}
+
+.menulist li{
+    @apply hover:text-gray-400;
+    @apply transition-colors;
+}
+
+.icon-container{
+    font-size: 4em;
     font-weight: bold;
     letter-spacing: .2em;
 }
 
 .icon-menu-container{
-    margin-right: 1em;
     -webkit-tap-highlight-color: transparent;
-    position: relative;
-    top: 2em;
+    top: 1.5rem;
 }
 
-.icon-menu, .icon-menu:before, .icon-menu:after{
-    width: 0.7em;
-    height: 0.05em;
+.icon-menu, .icon-menu:before, .icon-menu:after, .icon-close, .icon-close:before, .icon-close:after{
+    width: 3.5rem;
+    height: 0.3rem;
 }
 
 .icon-menu:before{
-    top: -0.15em;
+    top: -0.8rem;
 }
 
 .icon-menu:after{
-    top: 0.15em;
-}
-
-.icon-close, .icon-close:before, .icon-close:after{
-    width: 0.7em;
-    height: 0.05em;
+    top: 0.8rem;
 }
 
 .swiper-button-next, .swiper-button-prev {
@@ -63,7 +54,7 @@ header{
 }
 
 main{
-    padding-top:13rem;
+    padding-top: 10rem;
     padding-left: 2rem;
     padding-right: 2rem;
 }

@@ -5,8 +5,8 @@ import Container from "@components/Container.astro";
 ---
 <header id="header">
     <Container>
-        <nav class="navbar p-4 flex justify-between items-center">
-            <a href="/" class="titlemenu text-white text-lg">SIN</a>
+        <nav class="navbar p-4 flex justify-between items-center z-20">
+            <a href="/" class="titlemenu font-bold text-center text-5xl uppercase tracking-wider text-white">SIN</a>
             <div id="container" class="icon-menu-container">
                 <label for="checkbox"></label><input type="checkbox" id="checkbox"/>
                 <div id="icon-container" class="icon-container">
@@ -15,7 +15,8 @@ import Container from "@components/Container.astro";
             </div>
         </nav>
         <div id="menu" class="menu fixed inset-0 flex items-center justify-center" style="display:none;">
-            <ul class="text-center text-white bigtext ">
+            <!--<div class="container0h z-10"><div id="fullheight" class="fullheight"></div></div>-->
+            <ul class="menulist text-center text-white text-4xl uppercase tracking-wider font-bold z-30">
                 <li><a href="/">Home</a></li>
                 <li><a href="/studio">Studio</a></li>
                 <li><a href="/progetti">Progetti</a></li>
@@ -41,6 +42,7 @@ import Container from "@components/Container.astro";
                     const icon = document.getElementById("icon");
                     const checkbox = document.getElementById("checkbox") as HTMLInputElement | null;
                     const header = document.getElementById("header");
+                    //const fullheight = document.getElementById("fullheight");
                     const menu = document.querySelector<HTMLDivElement>(".menu");
                     const arrows = document.querySelectorAll<HTMLElement>(".splide__arrow");
 
@@ -55,6 +57,7 @@ import Container from "@components/Container.astro";
                         menu.style.opacity = "0";
                         setTimeout(() => {
                             menu.style.opacity = "1";
+                            //fullheight.style.opacity = "1";
                             menu.style.transition = "opacity 200ms";
                             header.classList.add("fullheight");
                         }, 10);
@@ -66,6 +69,7 @@ import Container from "@components/Container.astro";
                         menu.style.opacity = "0";
                         setTimeout(() => {
                             menu.style.display = "none";
+                            //fullheight.style.opacity = "0";
                             header.classList.remove("fullheight");
                         }, 200);
 

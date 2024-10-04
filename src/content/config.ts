@@ -27,7 +27,7 @@ const progetti = defineCollection({
     description: z.string(),
     place: z.string(),
     date: z.coerce.date(),
-    link: z.string(),
+    link: z.string().optional(),
     draft: z.boolean().optional(),
     demoURL: z.string().optional(),
     repoURL: z.string().optional()

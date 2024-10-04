@@ -17,8 +17,8 @@
 #icon-container {
   cursor: pointer;
   display:block;
-  height: 80px;
-  width: 80px;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 
 /* common styles*/
@@ -53,14 +53,14 @@
 /* line one of close icon */
 .icon-close::before {
   transform: rotate(45deg);
-  top: 0px;
+  top: 0;
   background: white;
 }
 
 /* line two of close icon */
 .icon-close::after {
   transform: rotate(-45deg);
-  top: 0px;
+  top: 0;
   background: white;
 }
 

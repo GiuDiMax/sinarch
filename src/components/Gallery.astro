@@ -2,16 +2,20 @@
 import fs from 'fs';
 import path from 'path';
 const { dir } = Astro.props;
+const dir2 = dir.replace('public/','/')
 //const isDev = import.meta.env.MODE === 'development';
 //const imagesDir = isDev ? path.resolve('public', dir) : path.resolve(dir);
-const images = fs.readdirSync(dir).filter(file => /\.(png|jpe?g|gif|webp)$/i.test(file));
+let images = [];
+try {
+    images = fs.readdirSync(dir).filter(file => /\.(png|jpe?g|gif|webp)$/i.test(file));
+}catch{}
 export { images };
 ---
 
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         {images.map(image => (
-                <div class="swiper-slide"><img src={`/slider/${image}`} alt={image} /></div>
+                <div class="swiper-slide"><img src={`${dir2}/${image}`} alt={image} /></div>
         ))}
     </div>
     <div class="swiper-button-next"></div>
@@ -25,8 +29,11 @@ export { images };
     import 'swiper/css';
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
-    
-    document.addEventListener('DOMContentLoaded', function() {
+
+    document.addEventListener("DOMContentLoaded", () => gallery());
+    document.addEventListener("astro:after-swap", () => gallery());
+
+    function gallery() {
         new Swiper('.mySwiper', {
             modules: [Navigation, Thumbs, Autoplay],
             mousewheel: true,
@@ -41,5 +48,5 @@ export { images };
                 delay: 5000,
             },
         });
-    });
+    };
 </script>
