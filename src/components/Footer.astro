@@ -1,20 +1,46 @@
 ---
 import Container from "@components/Container.astro";
-import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
+import {SITE, HOME, SOCIALS} from "@consts"
+import Link from "@components/Link.astro";
 ---
+<style>
+  .footer1{
+    justify-content: space-between;
+  }
+</style>
 
 <footer class="animate mx-10">
+
   <Container>
-    <div class="relative">
-      <div class="absolute right-0 -top-20">
-        <BackToTop />
+      <div class="relative">
+        <div class="absolute right-0 -top-20">
+          <BackToTop />
+        </div>
       </div>
-    </div>
-    <div class="flex justify-between items-center copyright">
-      <div>
-        &copy; 2024 {`|`} {SITE.NAME}
+    <section class="flex flex-row footer1">
+      <div class="flex justify-between items-center copyright">
+        <div>
+          &copy; 2024 {`|`} {SITE.NAME}
+        </div>
       </div>
-    </div>
+      <div class="space-y-4">
+        <ul class="flex flex-wrap gap-2">
+          {SOCIALS.map(SOCIAL => (
+              <li class="flex gap-x-2 text-nowrap ">
+                <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                  {SOCIAL.NAME}
+                </Link>
+                {"/"}
+              </li>
+          ))}
+          <li class="line-clamp-1">
+            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+              {SITE.EMAIL}
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </section>
   </Container>
 </footer>

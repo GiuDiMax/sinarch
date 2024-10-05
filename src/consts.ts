@@ -29,16 +29,20 @@ export const PROGETTI: Metadata = {
 };
 
 export const SOCIALS: Socials = [
-  { 
-    NAME: "twitter-x",
-    HREF: "https://twitter.com/markhorn_dev",
+  // {
+  //   NAME: "twitter-x",
+  //   HREF: "https://twitter.com/markhorn_dev",
+  // },
+  {
+    NAME: "instagram",
+    HREF: "https://www.instagram.com/sin_architettura"
   },
-  { 
-    NAME: "facebook",
-    HREF: "https://github.com/markhorn-dev"
-  },
+  // {
+  //   NAME: "facebook",
+  //   HREF: "https://github.com/markhorn-dev"
+  // },
   { 
     NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/markhorn-dev",
+    HREF: "#",
   }
 ];
