@@ -1,3 +1,9 @@
+html, body{
+    background-color: white;
+    @apply scroll-smooth;
+    @apply focus:scroll-auto;
+}
+
 header {
     @apply bg-black/10;
     @apply backdrop-blur;
@@ -6,6 +12,7 @@ header {
 }
 
 .fullheight{
+    height: 100%;
     height: 100%;
 }
 
@@ -80,4 +87,35 @@ main{
 
 .testo a{
     text-decoration: underline;
+}
+
+@media only screen and (max-width: 800px) {
+    .icon-container{
+        font-size: 3em;
+        font-weight: bold;
+        letter-spacing: .2em;
+    }
+
+    .icon-menu-container{
+        -webkit-tap-highlight-color: transparent;
+        top: 1.4rem;
+    }
+
+    .icon-menu, .icon-menu:before, .icon-menu:after, .icon-close, .icon-close:before, .icon-close:after{
+        width: 2.3rem;
+        height: 0.2rem;
+    }
+
+    .icon-menu:before{
+        top: -0.6rem;
+    }
+
+    .icon-menu:after{
+        top: 0.6rem;
+    }
+
+    .menulist{
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+    }
 }

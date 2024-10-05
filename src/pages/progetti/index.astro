@@ -7,26 +7,36 @@ import { PROGETTI } from "@consts";
 
 const projects = (await getCollection("progetti"))
   .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  .sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
 
-console.log(projects)
 ---
+
+<style>
+  h1{
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 1.8rem;
+    text-align: center;
+    z-index: 50;
+  }
+</style>
 
 <PageLayout title={PROGETTI.TITLE} description={PROGETTI.DESCRIPTION}>
   <Container>
-    <div class="space-y-10">
-      <h1 class="animate font-bold text-black text-center text-3xl uppercase tracking-wider">
-        Progetti
-      </h1>
-      <div class="animate grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-        {
-          projects.map((project) => (
-              <div>
-                <Cornice entry={project}/>
-              </div>
-          ))
-        }
-      </div>
+    <h1 class="animate font-bold text-white text-center text-2xl uppercase tracking-wider">
+      Progetti
+    </h1>
+    <div class="animate grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      {
+        projects.map((project) => (
+            <div>
+              <Cornice entry={project}/>
+            </div>
+        ))
+      }
     </div>
   </Container>
 </PageLayout>

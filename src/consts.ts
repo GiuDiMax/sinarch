@@ -2,7 +2,7 @@ import type { Site, Metadata, Socials } from "@types";
 
 export const SITE: Site = {
   NAME: "Sin Arch",
-  EMAIL: "paofort@outlook.it",
+  EMAIL: "sin.architettura@gmail.com",
   // NUM_NEWS_ON_HOMEPAGE: 0,
   // NUM_RICERCA_ON_HOMEPAGE: 0,
   // NUM_PROJECTS_ON_HOMEPAGE: 0,
@@ -37,12 +37,12 @@ export const SOCIALS: Socials = [
     NAME: "instagram",
     HREF: "https://www.instagram.com/sin_architettura"
   },
-  // {
-  //   NAME: "facebook",
-  //   HREF: "https://github.com/markhorn-dev"
-  // },
-  { 
-    NAME: "linkedin",
-    HREF: "#",
+  {
+    NAME: "facebook",
+    HREF: "https://www.facebook.com/SIN.architettura"
   }
+  // {
+  //   NAME: "linkedin",
+  //   HREF: "#",
+  // }
 ];

@@ -24,10 +24,15 @@ const progetti = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    description: z.string(),
+    description: z.string().optional(),
     place: z.string(),
-    date: z.coerce.date(),
+    year: z.number(),
+    typology: z.string().optional(),
     link: z.string().optional(),
+    client: z.string().optional(),
+    team: z.string().optional(),
+    price: z.string().optional(),
+    status: z.string().optional(),
     draft: z.boolean().optional(),
     demoURL: z.string().optional(),
     repoURL: z.string().optional()
