@@ -24,7 +24,7 @@ const progetti = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    description: z.string().optional(),
+    description: z.string(),
     place: z.string(),
     year: z.number(),
     typology: z.string().optional(),

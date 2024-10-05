@@ -1,6 +1,6 @@
 ---
 title: "Casa Luzzati"
-description: ""
+description: "Descrizione"
 place: "Bari"
 year: 2024
 draft: False
