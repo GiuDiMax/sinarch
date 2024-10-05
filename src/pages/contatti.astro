@@ -12,8 +12,6 @@ import SmallPageLayout from "@layouts/SmallPageLayout.astro";
     //     try{initMap()}catch{}
     // }
 
-    google.maps.event.addDomListener(window, 'load', initMap);
-
     function initMap() {
         var mapOptions = {
             zoom: 15,
@@ -76,6 +74,8 @@ import SmallPageLayout from "@layouts/SmallPageLayout.astro";
             }
         });
     }
+
+    google.maps.event.addDomListener(window, 'load', initMap);
 </script>
 
 <style>
