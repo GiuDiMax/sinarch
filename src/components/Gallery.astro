@@ -30,8 +30,9 @@ export { images };
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
 
-    document.addEventListener("DOMContentLoaded", () => gallery());
-    document.addEventListener("astro:after-swap", () => gallery());
+    //document.addEventListener("DOMContentLoaded", () => gallery());
+    //document.addEventListener("astro:after-swap", () => gallery());
+    document.addEventListener("astro:page-load", () => gallery());
 
     function gallery() {
         console.log('gallery')
