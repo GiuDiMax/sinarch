@@ -10,7 +10,7 @@ const { entry } = Astro.props;
 
 <a href={`/${entry.collection}/${entry.slug}`} class="elemento relative group flex flex-nowrap p-4 rounded-lg border border-black/15 hover:bg-black/5 hover:text-black transition-colors duration-300 ease-in-out">
   <div class="flex flex-col flex-1">
-    <img src={`/progetti/${entry.slug}/preview.webp`} alt={`/${entry.slug}`} class="aspect-square"/>
+    <img src={`/progetti/${entry.slug}/preview.webp`} alt={`/${entry.slug}`} class="aspect-square object-cover"/>
     <div class="font-bold mt-3 text-lg">
       {entry.data.title}
     </div>
