@@ -13,7 +13,10 @@ if (type==="disegni" || type==="news"){
   path = `/${type}/${entry.slug}.webp`
 }
 if (type == "news"){
-  classbis = "aspect2"
+  classbis = "aspect_news"
+}
+if (type == "ricerca"){
+  classbis = "aspect_ricerca"
 }
 ---
 
@@ -21,8 +24,12 @@ if (type == "news"){
   .elemento div img{
     aspect-ratio: 1/1.2;
   }
-  .elemento div .aspect2{
+  .elemento div .aspect_news{
     aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+  .elemento div .aspect_ricerca{
+    object-fit: contain;
   }
 </style>
 
