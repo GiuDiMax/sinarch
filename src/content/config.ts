@@ -4,7 +4,7 @@ const news = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    //description: z.string(),
+    description: z.string(),
     link: z.string(),
     year: z.number(),
     //date: z.coerce.date(),
@@ -62,6 +62,7 @@ const disegni = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    description: z.string(),
     year: z.number(),
     author: z.string().optional(),
     typology: z.string().optional(),
