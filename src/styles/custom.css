@@ -18,9 +18,10 @@ header {
 
 .titlemenu, .icon-container{
     position: relative;
-    z-index:9;
+    z-index: 99 !important;
     @apply hover:text-gray-400;
     @apply transition-colors;
+    pointer-events: auto;
 }
 
 .menulist{
