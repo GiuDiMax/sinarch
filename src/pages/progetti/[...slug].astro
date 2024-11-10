@@ -105,13 +105,19 @@ export { images };
       </div>
     </article>
     <ul id="info" class="animate testo text-black leading-8 mt-40">
-      <li>Anno: {project.data.year}</li>
-      <li>Luogo: {project.data.place}</li>
-      <li>Tipologia: {project.data.typology}</li>
-      <li>Client: {project.data.client}</li>
-      <li>Stato: {project.data.status}</li>
-      <li>Design Team: {project.data.team}</li>
-      <li>{project.data.price}</li>
+      <ul>
+        {project.data.description && <li>{project.data.description}</li>}
+        {project.data.annoTesto && <li>Anno: {project.data.annoTesto}</li>}
+        {project.data.place && <li>Luogo: {project.data.place}</li>}
+        {project.data.typology && <li>Tipologia: {project.data.typology}</li>}
+        {project.data.importo && <li>Importo: {project.data.importo}</li>}
+        {project.data.client && <li>Client: {project.data.client}</li>}
+        {project.data.status && <li>Stato: {project.data.status}</li>}
+        {project.data.team && <li>Con: {project.data.team}</li>}
+        {project.data.prize && <li>{project.data.prize}</li>}
+        {project.data.note && <li>{project.data.note}</li>}
+        {project.data.fotodi && <li class="mt-5">Foto: {project.data.fotodi}</li>}
+      </ul>
     </ul>
   </Container>
 </SmallPageLayout>

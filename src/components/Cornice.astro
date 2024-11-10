@@ -1,23 +1,35 @@
 ---
 import type { CollectionEntry } from "astro:content";
+//
+// type Props = {
+//   entry: CollectionEntry<"progetti">;
+// }
 
-type Props = {
-  entry: CollectionEntry<"progetti">;
+const { entry, type="progetti" } = Astro.props;
+let path = `/${type}/${entry.slug}/preview.webp`
+let classbis = ""
+
+if (type==="disegni" || type==="news"){
+  path = `/${type}/${entry.slug}.webp`
 }
-
-const { entry } = Astro.props;
+if (type == "news"){
+  classbis = "aspect2"
+}
 ---
 
 <style>
   .elemento div img{
     aspect-ratio: 1/1.2;
   }
+  .elemento div .aspect2{
+    aspect-ratio: 1/1;
+  }
 </style>
 
 <!--border border-black/15 rounded-lg-->
 <a href={`/${entry.collection}/${entry.slug}`} class="elemento relative group flex flex-nowrap p-4 hover:bg-black/5 text-black transition-colors duration-300 ease-in-out">
   <div class="flex flex-col flex-1 text-center">
-    <img src={`/progetti/${entry.slug}/preview.webp`} alt={`/${entry.slug}`} class=" object-cover"/>
+    <img src={path} alt={`/${entry.slug}`} class=` object-cover ${classbis}`/>
     <div class="font-bold mt-3 text-lg">
       {entry.data.title}
     </div>

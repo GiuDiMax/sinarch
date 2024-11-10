@@ -2,50 +2,42 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import { dateRange } from "@lib/utils";
+import Cornice from "@components/Cornice.astro";
 import { RICERCA } from "@consts";
 
-const collection = (await getCollection("ricerca"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
+const research = (await getCollection("ricerca"))
+  .filter(research => !research.data.draft)
+  .sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
 
-const work = await Promise.all(
-  collection.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
-);
 ---
+
+<style>
+  h1{
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 1.8rem;
+    text-align: center;
+    z-index: 50;
+    pointer-events: none;
+  }
+</style>
 
 <PageLayout title={RICERCA.TITLE} description={RICERCA.DESCRIPTION}>
   <Container>
-    <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
-        Work
-      </div>
-      <ul class="flex flex-col space-y-4">
-        { 
-          work.map(entry => (
-            <li class="animate">
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
-              <article>
-                <entry.Content />
-              </article>
-            </li>
-          ))
-        }
-      </ul>
-<!-- 
-      <ul class="animate flex flex-col gap-4">
-
-      </ul> -->
+    <h1 class="animate font-bold text-white text-center text-2xl uppercase tracking-wider">
+      Ricerca
+    </h1>
+    <div class="animate grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      {
+        research.map((research) => (
+            <div>
+              <Cornice entry={research} type="ricerca"/>
+            </div>
+        ))
+      }
     </div>
   </Container>
 </PageLayout>

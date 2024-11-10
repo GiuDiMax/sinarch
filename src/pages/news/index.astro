@@ -1,56 +1,43 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
+import Cornice from "@components/Cornice.astro";
 import { NEWS } from "@consts";
 
-const data = (await getCollection("news"))
-  .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  
-type Acc = {
-  [year: string]: CollectionEntry<"news">[];
-}
+const news = (await getCollection("news"))
+  .filter(news => !news.data.draft)
+  .sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
 
-const posts = data.reduce((acc: Acc, post) => {
-    const year = post.data.date.getFullYear().toString();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(post);
-    return acc;
-  }, {});
-
-const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a)); 
 ---
+
+<style>
+  h1{
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 1.8rem;
+    text-align: center;
+    z-index: 50;
+    pointer-events: none;
+  }
+</style>
 
 <PageLayout title={NEWS.TITLE} description={NEWS.DESCRIPTION}>
   <Container>
-    <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
-        Blog
-      </div>
-      <div class="space-y-4">
-        {years.map(year => (
-          <section class="animate space-y-4">
-            <div class="font-semibold text-black dark:text-white">
-              {year}
-            </div>
+    <h1 class="animate font-bold text-white text-center text-2xl uppercase tracking-wider">
+      News
+    </h1>
+    <div class="animate grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      {
+        news.map((news) => (
             <div>
-              <ul class="flex flex-col gap-4">
-                {
-                  posts[year].map((post) => (
-                    <li>
-                      <ArrowCard entry={post}/>
-                    </li>
-                  ))
-                }
-              </ul>
+              <Cornice entry={news} type="news"/>
             </div>
-          </section>
-        ))}
-      </div>
+        ))
+      }
     </div>
   </Container>
 </PageLayout>

@@ -1,0 +1,123 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+//import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { readingTime } from "@lib/utils";
+import BackToPrev from "@components/BackToPrev.astro";
+//import Link from "@components/Link.astro";
+import Gallery from "../../components/Gallery.astro";
+import SmallPageLayout from "../../layouts/SmallPageLayout.astro";
+import fs from 'fs';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection("ricerca"))
+    .filter(post => !post.data.draft)
+    .sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: project,
+  }));
+}
+type Props = CollectionEntry<"ricerca">;
+
+const project = Astro.props;
+const { Content } = await project.render();
+
+const dir = `public/ricerca/${project.slug}`
+const dir2 = dir.replace('public/','/')
+let images: string[] = [];
+try {
+  images = fs.readdirSync(dir).filter(file =>
+      /\.(png|jpe?g|gif|webp)$/i.test(file) && !/^preview\./i.test(file)
+  );
+}catch{}
+export { images };
+---
+
+<style>
+  @media only screen and (min-width: 801px) {
+    .submenu {
+      position: fixed;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      top: 2.3rem;
+      text-align: center;
+      z-index: 50;
+      display: flex;
+      flex-direction: row;
+      gap: 2em;
+      justify-content: center;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .submenu{
+      position: relative;
+      bottom: 3.8em;
+      display: flex;
+      flex-direction: row;
+      gap: 1.5em;
+      justify-content: center;
+      color: gray;
+    }
+  }
+</style>
+
+<SmallPageLayout title={project.data.title} description={project.data.description}>
+  <Container>
+    <div class="animate">
+      <BackToPrev href="/ricerca"></BackToPrev>
+    </div>
+    <ul class="submenu uppercase text-white">
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#disegni">Disegni</a></li>
+      <li><a href="#content">Testo</a></li>
+      <li><a href="#info">Info</a></li>
+    </ul>
+    <div class="space-y-1 my-1">
+      <!--<div class="animate flex items-center gap-1.5">-->
+      <!--  &lt;!&ndash;<div class="font-base text-sm">&ndash;&gt;-->
+      <!--  &lt;!&ndash;  <FormattedDate date={project.data.date} />&ndash;&gt;-->
+      <!--  &lt;!&ndash;</div>&ndash;&gt;-->
+      <!--  &lt;!&ndash;&bull;&ndash;&gt;-->
+      <!--  &lt;!&ndash;<div class="font-base text-sm">&ndash;&gt;-->
+      <!--  &lt;!&ndash;  {readingTime(project.body)}&ndash;&gt;-->
+      <!--  &lt;!&ndash;</div>&ndash;&gt;-->
+      <!--</div>-->
+      <div class="animate text-2xl font-semibold text-black dark:text-white text-center">
+        {project.data.title}
+      </div>
+    </div>
+    <article id="gallery" class="animate testo">
+      <div class="flex flex-col gap-20 mb-10 mt-20">
+        {images.map(image => (
+            <img src={`${dir2}/${image}`} alt={image} />
+        ))}
+      </div>
+      <div id="disegni">
+        <Gallery dir={'public/ricerca/'+project.slug+'/swiper'} />
+      </div>
+      <div id="content" class="mb-10 text-black">
+        <Content />
+      </div>
+    </article>
+    <ul id="info" class="animate testo text-black leading-8 mt-40">
+      <ul>
+        {project.data.description && <li>{project.data.description}</li>}
+        {project.data.annoTesto && <li>Anno: {project.data.annoTesto}</li>}
+        {project.data.place && <li>Luogo: {project.data.place}</li>}
+        {project.data.typology && <li>Tipologia: {project.data.typology}</li>}
+        {project.data.importo && <li>Importo: {project.data.importo}</li>}
+        {project.data.client && <li>Client: {project.data.client}</li>}
+        {project.data.status && <li>Stato: {project.data.status}</li>}
+        {project.data.team && <li>Con: {project.data.team}</li>}
+        {project.data.prize && <li>{project.data.prize}</li>}
+        {project.data.note && <li>{project.data.note}</li>}
+        {project.data.fotodi && <li class="mt-5">Foto: {project.data.fotodi}</li>}
+      </ul>
+    </ul>
+  </Container>
+</SmallPageLayout>

@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import Cornice from "@components/Cornice.astro";
+import { DISEGNI } from "@consts";
+
+const disegni = (await getCollection("disegni"))
+  .filter(disegni => !disegni.data.draft)
+  .sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
+
+---
+
+<style>
+  h1{
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 1.8rem;
+    text-align: center;
+    z-index: 50;
+    pointer-events: none;
+  }
+</style>
+
+<PageLayout title={DISEGNI.TITLE} description={DISEGNI.DESCRIPTION}>
+  <Container>
+    <h1 class="animate font-bold text-white text-center text-2xl uppercase tracking-wider">
+      Disegni
+    </h1>
+    <div class="animate grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      {
+        disegni.map((disegni) => (
+            <div>
+              <Cornice entry={disegni} type="disegni"/>
+            </div>
+        ))
+      }
+    </div>
+  </Container>
+</PageLayout>

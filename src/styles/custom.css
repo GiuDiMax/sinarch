@@ -2,6 +2,9 @@ html, body{
     background-color: white;
     @apply scroll-smooth;
     @apply focus:scroll-auto;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
 }
 
 header {
@@ -84,6 +87,7 @@ main{
 .testo{
     @apply hyphens-auto;
     @apply text-justify;
+    font-size: 1.2rem;
 }
 
 .testo a{
@@ -99,7 +103,7 @@ main{
 
     .icon-menu-container{
         -webkit-tap-highlight-color: transparent;
-        top: 1.4rem;
+        cursor: pointer;
     }
 
     .icon-menu, .icon-menu:before, .icon-menu:after, .icon-close, .icon-close:before, .icon-close:after{

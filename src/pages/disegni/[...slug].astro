@@ -1,0 +1,78 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+//import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { readingTime } from "@lib/utils";
+import BackToPrev from "@components/BackToPrev.astro";
+//import Link from "@components/Link.astro";
+import Gallery from "../../components/Gallery.astro";
+import SmallPageLayout from "../../layouts/SmallPageLayout.astro";
+import fs from 'fs';
+
+export async function getStaticPaths() {
+  const disegni = (await getCollection("disegni"))
+    .filter(post => !post.data.draft)
+    .sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
+  return disegni.map((disegni) => ({
+    params: { slug: disegni.slug },
+    props: disegni,
+  }));
+}
+type Props = CollectionEntry<"disegni">;
+
+const disegni = Astro.props;
+const { Content } = await disegni.render();
+
+const dir = `public/disegni/`
+const dir2 = dir.replace('public/','/')
+---
+
+<style>
+  @media only screen and (min-width: 801px) {
+    .submenu {
+      position: fixed;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      top: 2.3rem;
+      text-align: center;
+      z-index: 50;
+      display: flex;
+      flex-direction: row;
+      gap: 2em;
+      justify-content: center;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .submenu{
+      position: relative;
+      bottom: 3.8em;
+      display: flex;
+      flex-direction: row;
+      gap: 1.5em;
+      justify-content: center;
+      color: gray;
+    }
+  }
+</style>
+
+<SmallPageLayout title={disegni.data.title}>
+  <Container>
+    <div class="animate">
+      <BackToPrev href="/disegni"></BackToPrev>
+    </div>
+    <div class="space-y-1 my-1">
+      <div class="animate text-2xl font-semibold text-black dark:text-white text-center">
+        {disegni.data.title}
+      </div>
+    </div>
+    <article id="gallery" class="animate testo">
+      <div class="flex flex-col gap-20 mb-10 mt-20">
+        <img src={`${dir2}/${disegni.slug}.webp`} alt={disegni.slug} />
+      </div>
+    </article>
+  </Container>
+</SmallPageLayout>
