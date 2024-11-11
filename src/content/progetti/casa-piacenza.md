@@ -1,6 +1,7 @@
 ---
 title: 'Casa Piacenza'
 description: 'Progetto di ristrutturazione di unità immobiliare'
+client: "Piacenza Paolo"
 place: "Bari"
 year: 2023
 annoTesto: "2023"
