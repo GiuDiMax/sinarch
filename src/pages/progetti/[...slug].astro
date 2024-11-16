@@ -88,9 +88,7 @@ export { images };
     <article id="gallery" class="animate testo">
       <div class="flex flex-col gap-20 mb-10 mt-20">
         {images.map((image, index) => (
-            <a data-fancybox="gallery" href={`${dir2}/${image}`} key={index}>
-              <img class="img_fancybox" src={`${dir2}/${image}`} alt={image} />
-            </a>
+            <img data-fancybox="gallery" class="img_fancybox" src={`${dir2}/${image}`} alt={image} />
         ))}
       </div>
       <div id="disegni">
