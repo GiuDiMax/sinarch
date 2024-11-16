@@ -51,7 +51,6 @@ export { images };
       gap: 2em;
       justify-content: center;
       max-width: 800px;
-      pointer-events:none;
     }
   }
 
@@ -64,6 +63,7 @@ export { images };
       gap: 1.5em;
       justify-content: center;
       color: gray;
+      pointer-events:none;
     }
   }
 </style>
@@ -80,15 +80,6 @@ export { images };
       <li><a href="#info">Info</a></li>
     </ul>
     <div class="space-y-1 my-1">
-      <!--<div class="animate flex items-center gap-1.5">-->
-      <!--  &lt;!&ndash;<div class="font-base text-sm">&ndash;&gt;-->
-      <!--  &lt;!&ndash;  <FormattedDate date={project.data.date} />&ndash;&gt;-->
-      <!--  &lt;!&ndash;</div>&ndash;&gt;-->
-      <!--  &lt;!&ndash;&bull;&ndash;&gt;-->
-      <!--  &lt;!&ndash;<div class="font-base text-sm">&ndash;&gt;-->
-      <!--  &lt;!&ndash;  {readingTime(project.body)}&ndash;&gt;-->
-      <!--  &lt;!&ndash;</div>&ndash;&gt;-->
-      <!--</div>-->
       <div class="animate text-2xl font-semibold text-black dark:text-white text-center">
         {project.data.title}
       </div>

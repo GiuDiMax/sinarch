@@ -43,12 +43,16 @@ header {
 
 .icon-menu-container{
     -webkit-tap-highlight-color: transparent;
-    top: 1.5rem;
+    /*top: 1.5rem;*/
 }
 
 .icon-menu, .icon-menu:before, .icon-menu:after, .icon-close, .icon-close:before, .icon-close:after{
     width: 3.5rem;
     height: 0.3rem;
+}
+
+.icon-menu{
+    top: 0.4em;
 }
 
 .icon-menu:before{
@@ -57,6 +61,10 @@ header {
 
 .icon-menu:after{
     top: 0.8rem;
+}
+
+.icon-close{
+    top: 0.4em;
 }
 
 .swiper-button-next, .swiper-button-prev {
