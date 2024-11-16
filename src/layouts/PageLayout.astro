@@ -28,11 +28,15 @@ const { title, description } = Astro.props;
       import { Fancybox } from "@fancyapps/ui";
       import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
-      if (typeof window !== 'undefined') {
+      //document.addEventListener("DOMContentLoaded", () => init());
+      document.addEventListener("astro:page-load", () => init());
+
+      function init() {
+        Fancybox.defaults.Hash = false;
         Fancybox.bind("[data-fancybox='gallery']", {
-          // Your custom options
         });
       }
+
     </script>
 
     <Footer />
