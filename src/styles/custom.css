@@ -101,6 +101,10 @@ main{
     text-decoration: underline;
 }
 
+.img_fancybox{
+ cursor: pointer;
+}
+
 @media only screen and (max-width: 800px) {
     .icon-container{
         font-size: 3em;
