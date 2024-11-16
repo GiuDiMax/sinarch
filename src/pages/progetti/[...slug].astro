@@ -66,6 +66,7 @@ export { images };
       pointer-events:none;
     }
   }
+
 </style>
 
 <SmallPageLayout title={project.data.title} description={project.data.description}>
@@ -86,8 +87,10 @@ export { images };
     </div>
     <article id="gallery" class="animate testo">
       <div class="flex flex-col gap-20 mb-10 mt-20">
-        {images.map(image => (
-            <img src={`${dir2}/${image}`} alt={image} />
+        {images.map((image, index) => (
+            <a data-fancybox="gallery" href={`${dir2}/${image}`} key={index}>
+              <img class="img_fancybox" src={`${dir2}/${image}`} alt={image} />
+            </a>
         ))}
       </div>
       <div id="disegni">
