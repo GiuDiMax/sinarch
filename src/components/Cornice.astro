@@ -1,42 +1,32 @@
 ---
-import type { CollectionEntry } from "astro:content";
-//
-// type Props = {
-//   entry: CollectionEntry<"progetti">;
-// }
+const { entry, type = "progetti" } = Astro.props;
 
-const { entry, type="progetti" } = Astro.props;
-let path = `/${type}/${entry.slug}/preview.webp`
-let classbis = ""
+// Determina il percorso dell'immagine
+const path = type === "disegni" || type === "news"
+    ? `/${type}/${entry.slug}.webp`
+    : `/${type}/${entry.slug}/preview.webp`;
 
-if (type==="disegni" || type==="news"){
-  path = `/${type}/${entry.slug}.webp`
-}
-if (type == "news"){
-  classbis = "aspect_news"
-}
-if (type == "ricerca"){
-  classbis = "aspect_ricerca"
-}
+// Assegna la classe in base al tipo
+const classbis = type === "news" ? "aspect_news" : type === "ricerca" ? "aspect_ricerca" : "";
 ---
 
 <style>
-  .elemento div img{
+  .elemento div img {
     aspect-ratio: 1/1.2;
   }
-  .elemento div .aspect_news{
+  .elemento div .aspect_news {
     aspect-ratio: 1/1;
     object-fit: contain;
   }
-  .elemento div .aspect_ricerca{
+  .elemento div .aspect_ricerca {
     object-fit: contain;
   }
 </style>
 
-<!--border border-black/15 rounded-lg-->
+<!-- Link e struttura -->
 <a href={`/${entry.collection}/${entry.slug}`} class="elemento relative group flex flex-nowrap p-4 hover:bg-black/5 text-black transition-colors duration-300 ease-in-out">
   <div class="flex flex-col flex-1 text-center">
-    <img src={path} alt={`/${entry.slug}`} class=` object-cover ${classbis}`/>
+    <img src={path} alt={`/${entry.slug}`} class={`object-cover ${classbis}`} />
     <div class="font-bold mt-3 text-lg">
       {entry.data.title}
     </div>

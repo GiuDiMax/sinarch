@@ -34,6 +34,19 @@ const disegni = (await getCollection("disegni"))
       {
         disegni.map((disegni) => (
             <div>
+
+              <!--<a href={`/${entry.collection}/${entry.slug}`} class="elemento relative group flex flex-nowrap p-4 hover:bg-black/5 text-black transition-colors duration-300 ease-in-out">-->
+              <!--  <div class="flex flex-col flex-1 text-center">-->
+              <!--    <img src={`/disegni/${disegni.slug}.webp`} alt={`/${entry.slug}`} class={`object-cover ${classbis}`} />-->
+              <!--    <div class="font-bold mt-3 text-lg">-->
+              <!--      {entry.data.title}-->
+              <!--    </div>-->
+              <!--    <div class="text-base">-->
+              <!--      {entry.data.place}-->
+              <!--    </div>-->
+              <!--  </div>-->
+              <!--</a>-->
+
               <Cornice entry={disegni} type="disegni"/>
             </div>
         ))

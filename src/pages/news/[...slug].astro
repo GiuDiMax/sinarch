@@ -71,7 +71,7 @@ const dir2 = dir.replace('public/','/')
     </div>
     <article id="gallery" class="animate testo">
       <div class="flex flex-col gap-20 mb-10 mt-20">
-        <img src={`${dir2}/${news.slug}.webp`} alt={news.slug} />
+        <a target="_blank" href=`${news.data.link}`><img src={`${dir2}/${news.slug}.webp`} alt={news.slug} /></a>
       </div>
     </article>
     <div>
