@@ -1,0 +1,106 @@
+collections:
+  news:
+    path: src/content/news
+    fields:
+      - name: title
+        type: string
+      - name: description
+        type: string
+      - name: link
+        type: string
+      - name: year
+        type: number
+      - name: draft
+        type: boolean
+
+  ricerca:
+    path: src/content/ricerca
+    fields:
+      - name: title
+        type: string
+      - name: description
+        type: string
+      - name: place
+        type: string
+      - name: year
+        type: number
+      - name: annoTesto
+        type: string
+      - name: typology
+        type: string
+      - name: link
+        type: string
+      - name: client
+        type: string
+      - name: team
+        type: string
+      - name: note
+        type: string
+      - name: fotodi
+        type: string
+      - name: importo
+        type: string
+      - name: prize
+        type: string
+      - name: status
+        type: string
+      - name: draft
+        type: boolean
+      - name: demoURL
+        type: string
+      - name: repoURL
+        type: string
+
+  progetti:
+    path: src/content/progetti
+    fields:
+      - name: title
+        type: string
+      - name: description
+        type: string
+      - name: place
+        type: string
+      - name: year
+        type: number
+      - name: annoTesto
+        type: string
+      - name: typology
+        type: string
+      - name: link
+        type: string
+      - name: client
+        type: string
+      - name: team
+        type: string
+      - name: note
+        type: string
+      - name: fotodi
+        type: string
+      - name: importo
+        type: string
+      - name: prize
+        type: string
+      - name: status
+        type: string
+      - name: draft
+        type: boolean
+      - name: demoURL
+        type: string
+      - name: repoURL
+        type: string
+
+  disegni:
+    path: src/content/disegni
+    fields:
+      - name: title
+        type: string
+      - name: description
+        type: string
+      - name: year
+        type: number
+      - name: author
+        type: string
+      - name: typology
+        type: string
+      - name: draft
+        type: boolean
